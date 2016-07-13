@@ -1,0 +1,19 @@
+<style>
+	#LnkFixtures{
+		cursor: pointer;
+		color: blue;
+	}
+</style>
+
+<script>
+	//Simula um metodo para saber a rota atual (jeito feio)
+	function fnGoToLink(strParam)
+	{
+		var strNovoLink = window.location.href + strParam;
+		window.location.href = strNovoLink;
+	}
+</script>
+
+<p><span id="LnkFixtures" onclick="fnGoToLink('&fixture=banco');">Criar banco de dados.</span></p>
+<p><span id="LnkFixtures" onclick="fnGoToLink('&fixture=dados');">Inserir paginas e conteudo no banco de dados.</span></p>
+<p><span id="LnkFixtures" onclick="fnGoToLink('&fixture=tabelas');">Criar tabelas.</span></p>
