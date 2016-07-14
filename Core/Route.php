@@ -17,8 +17,8 @@
 				self::$objGenericClass = new GenericClassSystem();
 
 				if(self::$objResourceHelper->getController() === null){
-					//self::$objResourceHelper->redirect($strUrl);
-					fatalError('Informe uma rota');
+					self::$objResourceHelper->redirect('home');
+					//fatalError('Informe uma rota');
 				}
 			}
 
