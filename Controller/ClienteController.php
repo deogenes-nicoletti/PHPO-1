@@ -15,7 +15,7 @@
 
 		public function index($boolOrdenarInverso = false)
 		{
-			//if($this->SessionHelper()->exists('lstClientes') == true)
+			if($this->SessionHelper()->exists('lstClientes') == false)
 				$this->criarClientesDemo();
 
 			$lstClientes = $this->SessionHelper()->get('lstClientes');
