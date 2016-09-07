@@ -19,7 +19,7 @@
 		}
 
 		public function getData(){
-			return $this->boolSerialize == true ? $this->FileHelper()->deserializa($this->absData) : $this->absData;
+			return $this->isSerialized() == true ? $this->FileHelper()->deserializa($this->absData) : $this->absData;
 		}
 
 		public function isSerialized()

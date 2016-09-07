@@ -5,11 +5,11 @@
 	<title>
 	Home
 </title>
-	<link rel="stylesheet" type="text/css" href="http://localhost:8086/assets/bootstrap/css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="http://localhost:8086/assets/bootstrap/css/bootstrap-responsive.css">
-	<link rel="stylesheet" type="text/css" href="http://localhost:8086/assets/css/index.css">
-	<script src="http://localhost:8086/assets/jquery/jquery.min.js"></script>
-	<script src="http://localhost:8086/assets/bootstrap/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="http://localhost:8090/assets/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="http://localhost:8090/assets/bootstrap/css/bootstrap-responsive.css">
+	<link rel="stylesheet" type="text/css" href="http://localhost:8090/assets/css/index.css">
+	<script src="http://localhost:8090/assets/jquery/jquery.min.js"></script>
+	<script src="http://localhost:8090/assets/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
 
@@ -19,7 +19,7 @@
 			<nav class="nav-collapse collapse">
 				<a class="brand">Projeto1</a>
 				<ul class="nav">
-					<li class="active"><a href="http://localhost:8086/home">Home</a></li>
+					<li class="active"><a href="http://localhost:8090/home">Home</a></li>
 				</ul>
 			</nav>
 		</section>
@@ -75,8 +75,9 @@
       </div>
       <div class="modal-body">
         <p id="nome">Nome: <span>N/A</span></p>
-        <p id="cpf">CPF: <span>N/A</span></p>
+        <p id="cpf">CPF/CNPJ: <span>N/A</span></p>
         <p id="idade">Idade: <span>N/A</span></p>
+				<p id="grauImportancia">Grau importância: <span>N/A</span></p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -95,7 +96,7 @@
 			var objModal = new Modal();
 
 			$.ajax({
-				url : "http://localhost:8086/ajax-cliente-info/" + strId,
+				url : "http://localhost:8090/ajax-cliente-info/" + strId,
 				method : 'post',
 				dataType: 'json',
 				beforeSend: function(){
@@ -111,7 +112,7 @@
 
 	function fnAlterarOrdem(intOrdem)
 	{
-		window.location.href = "http://localhost:8086/home/" + intOrdem;
+		window.location.href = "http://localhost:8090/home/" + intOrdem;
 	}
 
 	function Modal()
@@ -119,8 +120,9 @@
 		this.setarInformacoesByResponseUsuario = function(responseUsuario)
 		{
 			$("#myModal p#nome span, #myModal h4#nome").text(responseUsuario.strNome);
-			$("#myModal p#cpf span").text(responseUsuario.strCpf);
+			$("#myModal p#cpf span").text(typeof responseUsuario.strCpf == 'undefined' ? responseUsuario.strCnpj : responseUsuario.strCpf);
 			$("#myModal p#idade span").text(responseUsuario.intIdade);
+			$("#myModal p#grauImportancia span").text(responseUsuario.intGrauImportancia);
 		}
 	}
 

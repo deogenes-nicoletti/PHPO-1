@@ -52,8 +52,9 @@
       </div>
       <div class="modal-body">
         <p id="nome">Nome: <span>N/A</span></p>
-        <p id="cpf">CPF: <span>N/A</span></p>
+        <p id="cpf">CPF/CNPJ: <span>N/A</span></p>
         <p id="idade">Idade: <span>N/A</span></p>
+				<p id="grauImportancia">Grau importância: <span>N/A</span></p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -96,8 +97,9 @@
 		this.setarInformacoesByResponseUsuario = function(responseUsuario)
 		{
 			$("#myModal p#nome span, #myModal h4#nome").text(responseUsuario.strNome);
-			$("#myModal p#cpf span").text(responseUsuario.strCpf);
+			$("#myModal p#cpf span").text(typeof responseUsuario.strCpf == 'undefined' ? responseUsuario.strCnpj : responseUsuario.strCpf);
 			$("#myModal p#idade span").text(responseUsuario.intIdade);
+			$("#myModal p#grauImportancia span").text(responseUsuario.intGrauImportancia);
 		}
 	}
 
